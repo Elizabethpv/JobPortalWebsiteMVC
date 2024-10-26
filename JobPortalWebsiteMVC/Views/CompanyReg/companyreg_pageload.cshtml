@@ -1,0 +1,171 @@
+﻿@model JobPortalWebsiteMVC.Models.Companyregcls
+@{
+    ViewBag.Title = "companyreg_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="row">
+        <div class="column">
+            <h2><b>Company Registration</b></h2>
+            <br />
+            @using (Html.BeginForm("Companyreg_click", "CompanyReg", FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Company Name</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.company_Name, new { @style = "width: 100%;" })
+                                <br />@Html.ValidationMessageFor(m => m.company_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Company Address</label>
+                            </div>
+                            <div>
+                                @Html.TextAreaFor(m => m.company_Address, new { @style = "width: 100%;" })
+                                <br />@Html.ValidationMessageFor(m => m.company_Address, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Company Email</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.company_Email, new { @style = "width: 100%;" })
+                                <br />@Html.ValidationMessageFor(m => m.company_Email, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Mobile Number</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.company_Number, new { @style = "width: 100%;" })
+                                <br />@Html.ValidationMessageFor(m => m.company_Number, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Company Website</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.company_website, new { @style = "width: 100%;" })
+                                <br />@Html.ValidationMessageFor(m => m.company_website, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Username</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.username, new { @style = "width: 100%;" })
+                                <br />@Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Password</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.password, new { @style = "width: 100%;" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Confirm Password</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.cpassword, new { @style = "width: 100%;" })
+                                <br />@Html.ValidationMessageFor(m => m.cpassword)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div>
+                                <input type="submit" value="Register" class="button" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            }
+            @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+                     window.onload = function () {
+                     alert("@ViewBag.Message");
+                     };
+                </script>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: cadetblue;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        /*width: fit-content;*/ 
+        width: fit-content;
+        height: auto; 
+        margin: 5% auto; 
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-sizing: border-box; 
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    table {      
+        table-layout: fixed;
+    }
+
+    td {
+        /*padding: 10px;*/
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top:20px;
+    }
+
+    .button {
+        padding: 10px 15px;
+        border: none;
+        background-color: blue;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%; /* Full width for the button */
+        height: 45px;
+        margin-top: 10px;
+    }
+</style>
+
+
+
+

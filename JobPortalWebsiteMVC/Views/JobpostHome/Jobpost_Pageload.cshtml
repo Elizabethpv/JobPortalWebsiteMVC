@@ -1,0 +1,169 @@
+﻿@model JobPortalWebsiteMVC.Models.jobpostcls
+@{
+    ViewBag.Title = "Jobpost_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="row">
+        <div class="column">
+            <h2><b>Share a Career Opportunity</b></h2>
+            <br />
+            @using (Html.BeginForm("jobpost_click", "JobpostHome", FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Job Tittle</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Job_Tittle, new { @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Job_Tittle, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Description</label>
+                            </div>
+                            <div>
+                                @Html.TextAreaFor(m => m.Job_description, new {  @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Job_description, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Job Type</label>
+                            </div>
+                            <div>
+                                @Html.DropDownList("selectedjobtype", (SelectList)ViewBag.selectjobtype, "--select--", new { @class = "form-control" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Experience</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Job_Experience, new {  @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Job_Experience, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Job Skill</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Job_Skills, new {  @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Job_Skills, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Job Salary</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Job_Salary, new {  @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Job_Salary, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Job Enddate</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Job_enddate, new { @type = "date", @class = "form-control", @style = "width: 100%;" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Location</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Job_Location, new { @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Job_Location, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div>
+                                <input type="submit" value="Submit" class="button" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            }
+            @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+                     window.onload = function () {
+                         alert("@ViewBag.Message");
+                     };
+                </script>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: cadetblue;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        /*width: fit-content;*/
+        width: fit-content;
+        height: auto;
+        margin: 5% auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    td {
+        /*padding: 10px;*/
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 20px;
+    }
+
+    .button {
+        padding: 10px 15px;
+        border: none;
+        background-color: blue;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%; /* Full width for the button */
+        height: 45px;
+        margin-top: 10px;
+    }
+</style>
+
+
+

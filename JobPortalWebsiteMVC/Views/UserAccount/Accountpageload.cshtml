@@ -1,0 +1,152 @@
+﻿@model JobPortalWebsiteMVC.Models.MultipleTableData
+@{
+    ViewBag.Title = "Accountpageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+
+            <table class="table w3-container">
+
+                @foreach (var item in Model.userdetailss)
+                {
+                    <center>
+                        <img src="@Url.Content(item.image)" alt="Avatar" style="padding-top:10px;width:200px;height:200px;object-fit:fill" />
+                    </center>
+                    <tr><td style="text-align:center"><h3><b>@Html.DisplayFor(m => item.Name)</b></h3></td></tr>
+                    <tr><td><label>Address : </label>@Html.DisplayFor(m => item.Address)</td></tr>
+                    <tr><td><label>Email : </label>@Html.DisplayFor(m => item.Email)</td></tr>
+                    <tr><td><label>Date of Birth : </label>@item.DateOfBirth.ToString("MM/dd/yyyy") </td></tr>
+                    <tr><td><label>Mobile Number : </label>@Html.DisplayFor(m => item.PhoneNumber)</td></tr>
+                }
+            </table>
+        </div>
+        <br>
+
+        <div class="col-sm-9">
+            <div class="well">
+                <h4>Resume</h4>
+                <table class="table w3-container">
+
+                    @foreach (var item in Model.resumeees)
+                    {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("ViewPdf", "UserAccount", new { resumeFileName =item.Resume})" target="_blank" class="btn btn-primary">View PDF</a>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeleteResume", "UserAccount", new { id = item.Resume_Id }, new { @class = "button" })
+                            </td>
+                        </tr>
+                    }
+                </table>
+                @Html.ActionLink("Add Resume", "ResumeLoad", "Resume")
+            </div>
+            <div class="well">
+                <h4>Education</h4>
+                <table class="table w3-container">
+                    <tr>
+                        <th><label>Course</label></th>
+                        <th><label>Institute</label></th>
+                        <th><label>Department</label></th>
+                        <th><label>Board</label></th>
+                        <th><label>Start Date</label></th>
+                        <th><label>End Date</label></th>
+                        <th><label>Percentage</label></th>
+
+                    </tr>
+                    @foreach (var item in Model.educationss)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Course_Name)</td>
+                            <td>@Html.DisplayFor(m => item.Institute_university)</td>
+                            <td>@Html.DisplayFor(m => item.Department)</td>
+                            <td> @Html.DisplayFor(m => item.Board)</td>
+                            <td>@item.Start_Date.ToString("MM/dd/yyyy")</td>
+                            <td>@item.End_Date.ToString("MM/dd/yyyy")</td>
+                            <td>@Html.DisplayFor(m => item.percentage)</td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeleteEducation", "UserAccount", new { id = item.Education_Id }, new { @class = "button" })
+
+                            </td>
+                        </tr>
+                    }
+                </table>
+                @Html.ActionLink("Add Education", "educationload", "Education")
+            </div>
+            <div class="well">
+                <h4>Experience</h4>
+                <table class="table w3-container">
+                    <tr>
+                        <th><label>JobTittle</label></th>
+                        <th><label>Company</label></th>
+                        <th><label>Location</label></th>
+                        <th><label>Role</label></th>
+                        <th><label>Start Date</label></th>
+                        <th><label>End Date</label></th>
+                        <th><label>Department</label></th>
+                        <th><label>Skill</label></th>
+                        <th><label>Description</label></th>
+
+                    </tr>
+                    @foreach (var item in Model.experienceee)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Jobtittle)</td>
+                            <td>@Html.DisplayFor(m => item.Company_Name)</td>
+                            <td>@Html.DisplayFor(m => item.Job_location)</td>
+                            <td> @Html.DisplayFor(m => item.Role)</td>
+                            <td>@item.Sart_Date.ToString("MM/dd/yyyy")</td>
+                            <td>@item.end_Date.ToString("MM/dd/yyyy")</td>
+                            <td>@Html.DisplayFor(m => item.Current_status)</td>
+                            <td>@Html.DisplayFor(m => item.Skills)</td>
+                            <td>@Html.DisplayFor(m => item.Description)</td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeleteExperience", "UserAccount", new { id = item.Exp_id }, new { @class = "button" })
+
+                            </td>
+                        </tr>
+                    }
+                </table>
+                @Html.ActionLink("Add Experience", "Experienceload", "Experience")
+            </div>
+        </div>
+    </div>
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+                     window.onload = function () {
+                     alert("@ViewBag.Message");
+                     };
+    </script>
+}
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+
+    .row.content {
+        height: 550px
+    }
+
+
+    .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+    }
+
+    img {
+        border-radius: 50%;
+    }
+</style>

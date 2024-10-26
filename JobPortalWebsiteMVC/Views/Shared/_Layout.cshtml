@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Stylesheets/StyleSheethome.css" rel="stylesheet" />
+   
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("JOBIFY", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["logintype"] != null && Session["logintype"].ToString() == "admin")
+                    {
+                        @*<li>@Html.ActionLink("JobPost", "Jobpost_Pageload", "JobpostHome")</li>*@
+                        <li>@Html.ActionLink("Logout", "Logout", "Logout")</li>
+                    }
+                    else if (Session["logintype"] != null && Session["logintype"].ToString() == "user")
+                    {
+                        <li>@Html.ActionLink("Job Home", "jobview_pageload", "JobView")</li>
+                        <li>@Html.ActionLink("Account", "Accountpageload", "UserAccount")</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Logout")</li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Signup <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Employee", "userreg_load", "UserReg")</li>
+                                <li>@Html.ActionLink("Company", "companyreg_pageload", "CompanyReg")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Login", "Login_Pageload", "Login")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    @*<div class="container body-content">*@
+    <div>
+        @RenderBody()
+        @*<hr />*@
+        <footer>
+            @*<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>*@
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

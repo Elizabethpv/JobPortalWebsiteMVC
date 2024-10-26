@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="JP_ApplicationTB">
+          <Key>
+            <PropertyRef Name="App_Id" />
+          </Key>
+          <Property Name="App_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Company_id" Type="int" Nullable="false" />
+          <Property Name="Job_Id" Type="int" Nullable="false" />
+          <Property Name="Resume" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="App_Date" Type="date" Nullable="false" />
+          <Property Name="App_Status" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_CompanyTB">
+          <Key>
+            <PropertyRef Name="company_id" />
+          </Key>
+          <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="company_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="company_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="company_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="company_Number" Type="bigint" Nullable="false" />
+          <Property Name="company_website" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_EducationTB">
+          <Key>
+            <PropertyRef Name="Education_Id" />
+          </Key>
+          <Property Name="Education_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="Course_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Institute_university" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Board" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Start_Date" Type="date" Nullable="false" />
+          <Property Name="End_Date" Type="date" Nullable="false" />
+          <Property Name="percentage" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_ExperienceTB">
+          <Key>
+            <PropertyRef Name="Exp_id" />
+          </Key>
+          <Property Name="Exp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="Jobtittle" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Company_Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Job_location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Sart_Date" Type="date" Nullable="false" />
+          <Property Name="end_Date" Type="date" Nullable="false" />
+          <Property Name="Current_status" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Skills" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_JobpostTB">
+          <Key>
+            <PropertyRef Name="Job_id" />
+          </Key>
+          <Property Name="Job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_id" Type="int" Nullable="false" />
+          <Property Name="Job_Tittle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_Experience" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_Skills" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_Salary" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_enddate" Type="date" Nullable="false" />
+          <Property Name="Job_Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Job_Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_LoginTB">
+          <Key>
+            <PropertyRef Name="Login_Id" />
+          </Key>
+          <Property Name="Login_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reg_Id" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Log_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_ResumeTB">
+          <Key>
+            <PropertyRef Name="Resume_Id" />
+          </Key>
+          <Property Name="Resume_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Resume" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_UserRegistrationTB">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="PhoneNumber" Type="bigint" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_CompanyJobPst" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Company_id" Type="int" Mode="In" />
+          <Parameter Name="Job_Tittle" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_Experience" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_Skills" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_Salary" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_enddate" Type="date" Mode="In" />
+          <Parameter Name="Job_Location" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_CompanyRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="company_id" Type="int" Mode="In" />
+          <Parameter Name="company_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="company_Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="company_Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="company_Number" Type="bigint" Mode="In" />
+          <Parameter Name="company_website" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_DeleteEducationWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DeleteExperienceWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DeleteResumeWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Education" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="Course_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Institute_university" Type="nvarchar" Mode="In" />
+          <Parameter Name="Department" Type="nvarchar" Mode="In" />
+          <Parameter Name="Board" Type="nvarchar" Mode="In" />
+          <Parameter Name="Start_Date" Type="date" Mode="In" />
+          <Parameter Name="End_Date" Type="date" Mode="In" />
+          <Parameter Name="percentage" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_EducationDataID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Experience" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="Jobtittle" Type="nvarchar" Mode="In" />
+          <Parameter Name="Company_Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Job_location" Type="nvarchar" Mode="In" />
+          <Parameter Name="Role" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sart_Date" Type="date" Mode="In" />
+          <Parameter Name="end_Date" Type="date" Mode="In" />
+          <Parameter Name="Current_status" Type="nvarchar" Mode="In" />
+          <Parameter Name="Skills" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_GetLoginIDCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="SP_GetLoginpersonType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetLoginpesonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetMaxRegid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_LoginRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Reg_Id" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="Log_Type" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_PostApplication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User_id" Type="int" Mode="In" />
+          <Parameter Name="Company_id" Type="int" Mode="In" />
+          <Parameter Name="Job_Id" Type="int" Mode="In" />
+          <Parameter Name="Resume" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="App_Date" Type="date" Mode="In" />
+          <Parameter Name="App_Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_PostResume" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User_Id" Type="int" Mode="In" />
+          <Parameter Name="Resume" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_UserRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="User_Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="DateOfBirth" Type="date" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="bigint" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="JP_ApplicationTB" EntityType="Self.JP_ApplicationTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JP_CompanyTB" EntityType="Self.JP_CompanyTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JP_EducationTB" EntityType="Self.JP_EducationTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JP_ExperienceTB" EntityType="Self.JP_ExperienceTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JP_JobpostTB" EntityType="Self.JP_JobpostTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JP_LoginTB" EntityType="Self.JP_LoginTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JP_ResumeTB" EntityType="Self.JP_ResumeTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JP_UserRegistrationTB" EntityType="Self.JP_UserRegistrationTB" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="JP_CompanyTB">
+          <Key>
+            <PropertyRef Name="company_id" />
+          </Key>
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="company_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company_Number" Type="Int64" Nullable="false" />
+          <Property Name="company_website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JP_LoginTB">
+          <Key>
+            <PropertyRef Name="Login_Id" />
+          </Key>
+          <Property Name="Login_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reg_Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Log_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="JobportalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JP_CompanyTB" EntityType="Self.JP_CompanyTB" />
+          <EntitySet Name="JP_LoginTB" EntityType="Self.JP_LoginTB" />
+          <FunctionImport Name="SP_CompanyRegistration">
+            <Parameter Name="company_id" Mode="In" Type="Int32" />
+            <Parameter Name="company_Name" Mode="In" Type="String" />
+            <Parameter Name="company_Address" Mode="In" Type="String" />
+            <Parameter Name="company_Email" Mode="In" Type="String" />
+            <Parameter Name="company_Number" Mode="In" Type="Int64" />
+            <Parameter Name="company_website" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetMaxRegid" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="SP_LoginRegistration">
+            <Parameter Name="Reg_Id" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="Log_Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetLoginIDCount">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetLoginpersonType" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetLoginpesonID" ReturnType="Collection(Int32)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CompanyJobPst">
+            <Parameter Name="Company_id" Mode="In" Type="Int32" />
+            <Parameter Name="Job_Tittle" Mode="In" Type="String" />
+            <Parameter Name="Job_description" Mode="In" Type="String" />
+            <Parameter Name="Job_Type" Mode="In" Type="String" />
+            <Parameter Name="Job_Experience" Mode="In" Type="String" />
+            <Parameter Name="Job_Skills" Mode="In" Type="String" />
+            <Parameter Name="Job_Salary" Mode="In" Type="String" />
+            <Parameter Name="Job_enddate" Mode="In" Type="DateTime" />
+            <Parameter Name="Job_Location" Mode="In" Type="String" />
+            <Parameter Name="Job_Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="JP_ExperienceTB" EntityType="Model.JP_ExperienceTB" />
+          <EntitySet Name="JP_UserRegistrationTB" EntityType="Model.JP_UserRegistrationTB" />
+          <FunctionImport Name="SP_Education">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="Course_Name" Mode="In" Type="String" />
+            <Parameter Name="Institute_university" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Board" Mode="In" Type="String" />
+            <Parameter Name="Start_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="End_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="percentage" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Experience">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="Jobtittle" Mode="In" Type="String" />
+            <Parameter Name="Company_Name" Mode="In" Type="String" />
+            <Parameter Name="Job_location" Mode="In" Type="String" />
+            <Parameter Name="Role" Mode="In" Type="String" />
+            <Parameter Name="Sart_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="end_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Current_status" Mode="In" Type="String" />
+            <Parameter Name="Skills" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UserRegistration">
+            <Parameter Name="User_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="DateOfBirth" Mode="In" Type="DateTime" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="Int64" />
+            <Parameter Name="image" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="JP_EducationTB" EntityType="Model.JP_EducationTB" />
+          <FunctionImport Name="SP_EducationDataID" ReturnType="Collection(Model.SP_EducationDataID_Result)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="JP_ResumeTB" EntityType="Model.JP_ResumeTB" />
+          <FunctionImport Name="SP_PostResume">
+            <Parameter Name="User_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Resume" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DeleteEducationWithID">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DeleteExperienceWithID">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DeleteResumeWithID">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="JP_JobpostTB" EntityType="Model.JP_JobpostTB" />
+          <FunctionImport Name="SP_PostApplication">
+            <Parameter Name="User_id" Mode="In" Type="Int32" />
+            <Parameter Name="Company_id" Mode="In" Type="Int32" />
+            <Parameter Name="Job_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Resume" Mode="In" Type="String" />
+            <Parameter Name="App_Date" Mode="In" Type="DateTime" />
+            <Parameter Name="App_Status" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="JP_ApplicationTB" EntityType="Model.JP_ApplicationTB" />
+        </EntityContainer>
+        <EntityType Name="JP_ExperienceTB">
+          <Key>
+            <PropertyRef Name="Exp_id" />
+          </Key>
+          <Property Name="Exp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="Jobtittle" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Company_Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Job_location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Sart_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="end_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Current_status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Skills" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="JP_UserRegistrationTB">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PhoneNumber" Type="Int64" Nullable="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="JP_EducationTB">
+          <Key>
+            <PropertyRef Name="Education_Id" />
+          </Key>
+          <Property Name="Education_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="Course_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Institute_university" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Board" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="percentage" Type="Int64" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="SP_EducationDataID_Result">
+          <Property Type="Int32" Name="Education_Id" Nullable="false" />
+          <Property Type="Int32" Name="user_id" Nullable="false" />
+          <Property Type="String" Name="Course_Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Institute_university" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Department" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Board" Nullable="false" MaxLength="30" />
+          <Property Type="DateTime" Name="Start_Date" Nullable="false" />
+          <Property Type="DateTime" Name="End_Date" Nullable="false" />
+          <Property Type="Int64" Name="percentage" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="JP_ResumeTB">
+          <Key>
+            <PropertyRef Name="Resume_Id" />
+          </Key>
+          <Property Name="Resume_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Resume" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="JP_JobpostTB">
+          <Key>
+            <PropertyRef Name="Job_id" />
+          </Key>
+          <Property Name="Job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_id" Type="Int32" Nullable="false" />
+          <Property Name="Job_Tittle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Experience" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Skills" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Salary" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_enddate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Job_Location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Job_Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="JP_ApplicationTB">
+          <Key>
+            <PropertyRef Name="App_Id" />
+          </Key>
+          <Property Name="App_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Company_id" Type="Int32" Nullable="false" />
+          <Property Name="Job_Id" Type="Int32" Nullable="false" />
+          <Property Name="Resume" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="App_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="App_Status" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="JobportalEntities">
+          <EntitySetMapping Name="JP_CompanyTB">
+            <EntityTypeMapping TypeName="Model.JP_CompanyTB">
+              <MappingFragment StoreEntitySet="JP_CompanyTB">
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="company_Name" ColumnName="company_Name" />
+                <ScalarProperty Name="company_Address" ColumnName="company_Address" />
+                <ScalarProperty Name="company_Email" ColumnName="company_Email" />
+                <ScalarProperty Name="company_Number" ColumnName="company_Number" />
+                <ScalarProperty Name="company_website" ColumnName="company_website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JP_LoginTB">
+            <EntityTypeMapping TypeName="Model.JP_LoginTB">
+              <MappingFragment StoreEntitySet="JP_LoginTB">
+                <ScalarProperty Name="Login_Id" ColumnName="Login_Id" />
+                <ScalarProperty Name="Reg_Id" ColumnName="Reg_Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Log_Type" ColumnName="Log_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_CompanyRegistration" FunctionName="Model.Store.SP_CompanyRegistration" />
+          <FunctionImportMapping FunctionImportName="SP_GetMaxRegid" FunctionName="Model.Store.SP_GetMaxRegid" />
+          <FunctionImportMapping FunctionImportName="SP_LoginRegistration" FunctionName="Model.Store.SP_LoginRegistration" />
+          <FunctionImportMapping FunctionImportName="SP_GetLoginIDCount" FunctionName="Model.Store.SP_GetLoginIDCount" />
+          <FunctionImportMapping FunctionImportName="SP_GetLoginpersonType" FunctionName="Model.Store.SP_GetLoginpersonType" />
+          <FunctionImportMapping FunctionImportName="SP_GetLoginpesonID" FunctionName="Model.Store.SP_GetLoginpesonID" />
+          <FunctionImportMapping FunctionImportName="SP_CompanyJobPst" FunctionName="Model.Store.SP_CompanyJobPst" />
+          <EntitySetMapping Name="JP_ExperienceTB">
+            <EntityTypeMapping TypeName="Model.JP_ExperienceTB">
+              <MappingFragment StoreEntitySet="JP_ExperienceTB">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="Current_status" ColumnName="Current_status" />
+                <ScalarProperty Name="end_Date" ColumnName="end_Date" />
+                <ScalarProperty Name="Sart_Date" ColumnName="Sart_Date" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Job_location" ColumnName="Job_location" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Jobtittle" ColumnName="Jobtittle" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Exp_id" ColumnName="Exp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JP_UserRegistrationTB">
+            <EntityTypeMapping TypeName="Model.JP_UserRegistrationTB">
+              <MappingFragment StoreEntitySet="JP_UserRegistrationTB">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Education" FunctionName="Model.Store.SP_Education" />
+          <FunctionImportMapping FunctionImportName="SP_Experience" FunctionName="Model.Store.SP_Experience" />
+          <FunctionImportMapping FunctionImportName="SP_UserRegistration" FunctionName="Model.Store.SP_UserRegistration" />
+          <EntitySetMapping Name="JP_EducationTB">
+            <EntityTypeMapping TypeName="Model.JP_EducationTB">
+              <MappingFragment StoreEntitySet="JP_EducationTB">
+                <ScalarProperty Name="percentage" ColumnName="percentage" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="Board" ColumnName="Board" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Institute_university" ColumnName="Institute_university" />
+                <ScalarProperty Name="Course_Name" ColumnName="Course_Name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Education_Id" ColumnName="Education_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_EducationDataID" FunctionName="Model.Store.SP_EducationDataID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.SP_EducationDataID_Result">
+                <ScalarProperty Name="Education_Id" ColumnName="Education_Id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Course_Name" ColumnName="Course_Name" />
+                <ScalarProperty Name="Institute_university" ColumnName="Institute_university" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Board" ColumnName="Board" />
+                <ScalarProperty Name="Start_Date" ColumnName="Start_Date" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="percentage" ColumnName="percentage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="JP_ResumeTB">
+            <EntityTypeMapping TypeName="Model.JP_ResumeTB">
+              <MappingFragment StoreEntitySet="JP_ResumeTB">
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Resume_Id" ColumnName="Resume_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_PostResume" FunctionName="Model.Store.SP_PostResume" />
+          <FunctionImportMapping FunctionImportName="SP_DeleteEducationWithID" FunctionName="Model.Store.SP_DeleteEducationWithID" />
+          <FunctionImportMapping FunctionImportName="SP_DeleteExperienceWithID" FunctionName="Model.Store.SP_DeleteExperienceWithID" />
+          <FunctionImportMapping FunctionImportName="SP_DeleteResumeWithID" FunctionName="Model.Store.SP_DeleteResumeWithID" />
+          <EntitySetMapping Name="JP_JobpostTB">
+            <EntityTypeMapping TypeName="Model.JP_JobpostTB">
+              <MappingFragment StoreEntitySet="JP_JobpostTB">
+                <ScalarProperty Name="Job_Status" ColumnName="Job_Status" />
+                <ScalarProperty Name="Job_Location" ColumnName="Job_Location" />
+                <ScalarProperty Name="Job_enddate" ColumnName="Job_enddate" />
+                <ScalarProperty Name="Job_Salary" ColumnName="Job_Salary" />
+                <ScalarProperty Name="Job_Skills" ColumnName="Job_Skills" />
+                <ScalarProperty Name="Job_Experience" ColumnName="Job_Experience" />
+                <ScalarProperty Name="Job_Type" ColumnName="Job_Type" />
+                <ScalarProperty Name="Job_description" ColumnName="Job_description" />
+                <ScalarProperty Name="Job_Tittle" ColumnName="Job_Tittle" />
+                <ScalarProperty Name="Company_id" ColumnName="Company_id" />
+                <ScalarProperty Name="Job_id" ColumnName="Job_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_PostApplication" FunctionName="Model.Store.SP_PostApplication" />
+          <EntitySetMapping Name="JP_ApplicationTB">
+            <EntityTypeMapping TypeName="Model.JP_ApplicationTB">
+              <MappingFragment StoreEntitySet="JP_ApplicationTB">
+                <ScalarProperty Name="App_Status" ColumnName="App_Status" />
+                <ScalarProperty Name="App_Date" ColumnName="App_Date" />
+                <ScalarProperty Name="Resume" ColumnName="Resume" />
+                <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+                <ScalarProperty Name="Company_id" ColumnName="Company_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="App_Id" ColumnName="App_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

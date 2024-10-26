@@ -1,0 +1,86 @@
+﻿@model JobPortalWebsiteMVC.Models.Logincls
+@{
+    ViewBag.Title = "Login_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="row">
+        <div class="column">
+            <h2><b>Login</b></h2>
+            <br />
+            @using (Html.BeginForm("Login_click", "Login", FormMethod.Post))
+            {
+                <div>
+                    <label>UserName</label>
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.Username, new { @style = "width: 300px;" })
+                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <div>
+                    <label>Password</label>
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.Password, new { @style = "width: 300px;" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div><br />
+                <div>
+                    <input type="submit" value="Login" class="button" />
+                </div>
+                <div>
+                    <h5>Dont hav an Account?@Html.ActionLink("Register", "Index", "Home") </h5>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        /* background-image: url("../../HomeImages/Background.jpg");
+        background-repeat:no-repeat;
+        background-size: cover;*/
+        /*background-color:darkslategrey*/
+        background: #40a3f6;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 400px;
+        height: auto;
+        margin-top: 5%;
+        margin-left: auto;
+        margin-right: auto;
+        /*background-color: rgba(255, 255, 255, .4);*/
+        background-color:white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+    .column {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        padding: 0; 
+    }
+    .button {
+        padding: 5px 15px;
+        border: none;
+        background-color: blue;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%; 
+        height: 30px;
+        margin-top: 10px; 
+    }
+</style>
+

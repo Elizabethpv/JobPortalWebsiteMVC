@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Company_homepage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Welcome Companyhomepage</h2>
+
+<div style="padding:100px">
+    @*<img src="~/HomeImages/add.png" alt="add Post" style="width:100px;height:100px" />*@
+    <a href="@Url.Action("Jobpost_Pageload","JobpostHome")" >
+        <img src="@Url.Content("~/HomeImages/add.png")" style="width:200px;height:200px"/>
+    </a>
+    <br />
+    <div>
+        <h2> @Html.ActionLink("Job post", "Jobpost_Pageload", "JobpostHome")</h2>
+    </div>
+</div>
+
+

@@ -1,0 +1,152 @@
+﻿@model JobPortalWebsiteMVC.Models.Educationcls
+@{
+    ViewBag.Title = "educationload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="row">
+        <div class="column">
+            <h2><b>Education</b></h2>
+            <br />
+            @using (Html.BeginForm("education_click", "Education", FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Course Name</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Course_Name, new { @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Course_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Institute/University</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Institute_university, new { @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Institute_university, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Department</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Department, new { @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Department, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>Board</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Board, new { @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Board, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>
+                                <label>Start Date</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Start_Date, new { @type = "date", @class = "form-control", @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.Start_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <label>End Date</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.End_Date, new { @type = "date", @class = "form-control", @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.End_Date, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>                     
+                        <td>
+                            <div>
+                                <label>Percentage</label>
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.percentage, new { @style = "width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.percentage, "", new { @class = "text-danger" })
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="submit" value="Submit" class="button"/>
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: cadetblue;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        /*width: fit-content;*/
+        width: fit-content;
+        height: auto;
+        margin: 5% auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    td {
+        /*padding: 10px;*/
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 20px;
+    }
+
+    .button {
+        padding: 10px 15px;
+        border: none;
+        background-color: blue;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%; /* Full width for the button */
+        height: 45px;
+        margin-top: 10px;
+    }
+</style>
+
+
