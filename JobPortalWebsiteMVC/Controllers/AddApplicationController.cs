@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using JobPortalWebsiteMVC.Models;
 using System.Configuration;
 using System.IO;
+using System.Data.Entity.Core.Objects;
 
 namespace JobPortalWebsiteMVC.Controllers
 {
@@ -20,31 +21,41 @@ namespace JobPortalWebsiteMVC.Controllers
             TempData["cid"] = cid;
             Session["Jid"] = jid;
             TempData["jid"] = jid;
-            return View(getdata());
+            ObjectParameter op = new ObjectParameter("status", typeof(int));
+            int userid = Convert.ToInt32(Session["uid"]);
+            int jobids = Convert.ToInt32(Session["Jid"]);
+            dbobj.SP_CountUserAppliedJobWithID(userid, jobids, op);
+            int countapply = Convert.ToInt32(op.Value);
+            if (countapply ==1)
+            {
+                ViewBag.isapplied = countapply;
+            }
+             return View(getdata());
         }
         public ActionResult Application_click(HttpPostedFileBase file,Applicationcls clsobj)
         {
             if (ModelState.IsValid)
             {
-                if (file.ContentLength > 0)
-                {
-                    string fname = Path.GetFileName(file.FileName);
-                    var s = Server.MapPath("~/ApplicationResume");
-                    string pa = Path.Combine(s, fname);
-                    file.SaveAs(pa);
+                
+                    if (file.ContentLength > 0)
+                    {
+                        string fname = Path.GetFileName(file.FileName);
+                        var s = Server.MapPath("~/ApplicationResume");
+                        string pa = Path.Combine(s, fname);
+                        file.SaveAs(pa);
 
-                    var fullpath = Path.Combine("~/ApplicationResume", fname);
-                    clsobj.Resume = fullpath;
-                }
+                        var fullpath = Path.Combine("~/ApplicationResume", fname);
+                        clsobj.Resume = fullpath;
+                    }
 
-                DateTime currentDate = DateTime.Today;
-                clsobj.App_Date = currentDate;
-                clsobj.User_id = Convert.ToInt32(Session["uid"]);
-                clsobj.Company_id = Convert.ToInt32(TempData["cid"]);
-                int jobid = Convert.ToInt32(Session["Jid"]);
-                dbobj.SP_PostApplication(clsobj.User_id, clsobj.Company_id, jobid, clsobj.Resume, clsobj.App_Date, "apply");
-              
-                return RedirectToAction("jobview_pageload", "JobView");
+                    DateTime currentDate = DateTime.Today;
+                    clsobj.App_Date = currentDate;
+                    clsobj.User_id = Convert.ToInt32(Session["uid"]);
+                    clsobj.Company_id = Convert.ToInt32(TempData["cid"]);
+                    int jobid = Convert.ToInt32(Session["Jid"]);
+                    dbobj.SP_PostApplication(clsobj.User_id, clsobj.Company_id, jobid, clsobj.Resume, clsobj.App_Date, "apply");
+
+                    return RedirectToAction("jobview_pageload", "JobView");         
             }
             else
             {

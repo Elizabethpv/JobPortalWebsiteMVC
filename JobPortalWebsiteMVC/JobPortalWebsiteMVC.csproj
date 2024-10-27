@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AddApplicationController.cs" />
+    <Compile Include="Controllers\CompanyAccountController.cs" />
     <Compile Include="Controllers\CompanyRegController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperienceController.cs" />
@@ -183,6 +184,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Applicationcls.cs" />
+    <Compile Include="Models\CompanyPostedjobView.cs" />
     <Compile Include="Models\Companyregcls.cs" />
     <Compile Include="Models\Educationcls.cs" />
     <Compile Include="Models\Experiencecls.cs" />
@@ -191,7 +193,6 @@
     <Compile Include="Models\Logincls.cs" />
     <Compile Include="Models\MultipleTableData.cs" />
     <Compile Include="Models\Resumecls.cs" />
-    <Compile Include="Models\SQLDataAccessDB.cs" />
     <Compile Include="Models\Userregcls.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SP_EducationDataID_Result.cs">
@@ -269,6 +270,7 @@
     <Content Include="Views\Experience\Experienceload.cshtml" />
     <Content Include="Views\JobView\jobview_pageload.cshtml" />
     <Content Include="Views\AddApplication\Apllication_load.cshtml" />
+    <Content Include="Views\CompanyAccount\CompanyAccount_pageload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApplicationResume\" />

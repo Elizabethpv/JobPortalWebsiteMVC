@@ -31,11 +31,13 @@
                     @if (Session["logintype"] != null && Session["logintype"].ToString() == "admin")
                     {
                         @*<li>@Html.ActionLink("JobPost", "Jobpost_Pageload", "JobpostHome")</li>*@
+                        <li>@Html.ActionLink("Add Job", "Company_homepage", "Login")</li>
+                        <li>@Html.ActionLink("Account", "CompanyAccount_pageload", "CompanyAccount")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Logout")</li>
                     }
                     else if (Session["logintype"] != null && Session["logintype"].ToString() == "user")
                     {
-                        <li>@Html.ActionLink("Job Home", "jobview_pageload", "JobView")</li>
+                        <li>@Html.ActionLink("Find Jobs", "jobview_pageload", "JobView")</li>
                         <li>@Html.ActionLink("Account", "Accountpageload", "UserAccount")</li>
                         <li>@Html.ActionLink("Logout", "Logout", "Logout")</li>
                     }

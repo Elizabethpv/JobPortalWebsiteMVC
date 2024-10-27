@@ -126,11 +126,19 @@
           <Parameter Name="company_Number" Type="bigint" Mode="In" />
           <Parameter Name="company_website" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SP_CountUserAppliedJobWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="Jobid" Type="int" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="SP_DeleteEducationWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_DeleteExperienceWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DeletePostedJobWIthComID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="jobid" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_DeleteResumeWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -344,6 +352,19 @@
             <Parameter Name="App_Status" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="JP_ApplicationTB" EntityType="Model.JP_ApplicationTB" />
+          <FunctionImport Name="SP_DeletePostedJobWIthComID">
+          <Parameter Name="jobid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CountUserAppliedJobUsingID" ReturnType="Collection(Int32)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="Jobid" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CountUserAppliedJobWithID">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="Jobid" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="JP_ExperienceTB">
           <Key>
@@ -581,6 +602,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_DeletePostedJobWIthComID" FunctionName="Model.Store.SP_DeletePostedJobWIthComID" />
+          <FunctionImportMapping FunctionImportName="SP_CountUserAppliedJobWithID" FunctionName="Model.Store.SP_CountUserAppliedJobWithID" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

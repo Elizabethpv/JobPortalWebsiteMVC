@@ -8,14 +8,13 @@
 <div class="card">
     <div class="row">
         <div class="column">
-            <h2 style="text-align:center"><b>Applying Job</b></h2>
-            <hr style="width:100%;text-align:left;margin-left:0">
+            <h2 style="text-align:center">Job Application</h2>
             <table>
                 @foreach (var item in Model.selectjobdetails)
                 {
                     <tr>
                         <td>
-                            <h2> @Html.DisplayFor(modelItem => item.Job_Tittle)</h2>
+                            <h2><b> @Html.DisplayFor(modelItem => item.Job_Tittle)</b></h2>
                         </td>
                     </tr>
                     <tr>
@@ -74,9 +73,18 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <input id="Submit1" type="Submit" value="Submit Application" class="button" style="text-align:center" />
-                        </td>
+                        @if (ViewBag.isapplied == 1)
+                        {
+                            <td>
+                                <input id="Button1" type="button" value="Already Applied" class="button" style="text-align:center" disabled />
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <input id="Submit1" type="Submit" value="Submit Your Application" class="button" style="text-align:center" />
+                            </td>
+                        }
                     </tr>
                 </table>
             }

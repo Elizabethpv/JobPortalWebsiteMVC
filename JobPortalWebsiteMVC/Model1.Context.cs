@@ -375,5 +375,40 @@ namespace JobPortalWebsiteMVC
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_PostApplication", user_idParameter, company_idParameter, job_IdParameter, resumeParameter, app_DateParameter, app_StatusParameter);
         }
+    
+        public virtual int SP_DeletePostedJobWIthComID(Nullable<int> jobid)
+        {
+            var jobidParameter = jobid.HasValue ?
+                new ObjectParameter("jobid", jobid) :
+                new ObjectParameter("jobid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_DeletePostedJobWIthComID", jobidParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SP_CountUserAppliedJobUsingID(Nullable<int> userid, Nullable<int> jobid, ObjectParameter status)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var jobidParameter = jobid.HasValue ?
+                new ObjectParameter("Jobid", jobid) :
+                new ObjectParameter("Jobid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_CountUserAppliedJobUsingID", useridParameter, jobidParameter, status);
+        }
+    
+        public virtual int SP_CountUserAppliedJobWithID(Nullable<int> userid, Nullable<int> jobid, ObjectParameter status)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var jobidParameter = jobid.HasValue ?
+                new ObjectParameter("Jobid", jobid) :
+                new ObjectParameter("Jobid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CountUserAppliedJobWithID", useridParameter, jobidParameter, status);
+        }
     }
 }

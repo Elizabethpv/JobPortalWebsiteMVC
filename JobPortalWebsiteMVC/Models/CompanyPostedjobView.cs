@@ -5,24 +5,10 @@ using System.Web;
 
 namespace JobPortalWebsiteMVC.Models
 {
-    public class Applicationcls
+    public class CompanyPostedjobView
     {
-        public int User_id { get; set; }
+        public int job_id { get; set; }
         public int Company_id { get; set; }
-        public int Job_Id { get; set; }
-        public string Resume { get; set; }
-        public System.DateTime App_Date { get; set; }
-        public string App_Status { get; set; }
-        public int Isapplied { get; set; }
-        public Applicationcls()
-        {
-            selectjobdetails = new List<jobdetails>();        
-        }
-        public List<jobdetails> selectjobdetails { set; get; }
-    }
-    public class jobdetails
-    {
-        public int Company_idFK { get; set; }
 
         public string Job_Tittle { get; set; }
 
@@ -39,4 +25,7 @@ namespace JobPortalWebsiteMVC.Models
         public int jobype_Id { get; set; }
         public string jobtype_name { get; set; }
     }
+    
+       
+    
 }

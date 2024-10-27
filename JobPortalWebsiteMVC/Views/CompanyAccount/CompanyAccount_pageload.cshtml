@@ -1,0 +1,85 @@
+﻿@model IEnumerable<JobPortalWebsiteMVC.Models.CompanyPostedjobView>
+@{
+    ViewBag.Title = "CompanyAccount_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Posted Jobs</h2>
+
+<table class="table w3-container">
+    <tr>
+        <th>
+            <label>Job</label>
+        </th>
+        <th>
+            <label>Description</label>
+        </th>
+        <th>
+            <label>Experience</label>
+        </th>
+        <th>
+            <label>Skills</label>
+        </th>
+        <th>
+            <label>Salary</label>
+        </th>
+        <th>
+            <label>End Date</label>
+        </th>
+        <th>
+            <label>Location</label>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_Tittle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_description)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_Experience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_Skills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_Salary)
+            </td>
+            <td>
+                @item.Job_enddate.ToString("MM/dd/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_Location)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "CompanyAccount_Deleteclick", "CompanyAccount", new { jobid = item.job_id }, new { @class = "btn danger" })
+            </td>
+        </tr>
+    }
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2
+    }
+
+    th {
+        background-color: #04AA6D;
+        color: white;
+    }
