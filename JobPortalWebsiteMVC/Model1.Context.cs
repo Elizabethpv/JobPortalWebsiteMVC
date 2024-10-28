@@ -410,5 +410,52 @@ namespace JobPortalWebsiteMVC
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CountUserAppliedJobWithID", useridParameter, jobidParameter, status);
         }
+    
+        public virtual ObjectResult<SP_UserDataID_Result> SP_UserDataID(Nullable<int> userid)
+        {
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_UserDataID_Result>("SP_UserDataID", useridParameter);
+        }
+    
+        public virtual int SP_UpdateUSerRegData(Nullable<int> user_id, string name, string address, string email, Nullable<long> phoneNumber)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("Address", address) :
+                new ObjectParameter("Address", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var phoneNumberParameter = phoneNumber.HasValue ?
+                new ObjectParameter("PhoneNumber", phoneNumber) :
+                new ObjectParameter("PhoneNumber", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateUSerRegData", user_idParameter, nameParameter, addressParameter, emailParameter, phoneNumberParameter);
+        }
+    
+        public virtual int SP_UpdateUSerRegProfilepic(Nullable<int> user_id, string image)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var imageParameter = image != null ?
+                new ObjectParameter("image", image) :
+                new ObjectParameter("image", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UpdateUSerRegProfilepic", user_idParameter, imageParameter);
+        }
     }
 }

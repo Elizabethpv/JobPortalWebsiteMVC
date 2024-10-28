@@ -21,8 +21,15 @@
                     <tr><td><label>Email : </label>@Html.DisplayFor(m => item.Email)</td></tr>
                     <tr><td><label>Date of Birth : </label>@item.DateOfBirth.ToString("MM/dd/yyyy") </td></tr>
                     <tr><td><label>Mobile Number : </label>@Html.DisplayFor(m => item.PhoneNumber)</td></tr>
+                    <tr>
+                        <td>
+                            @Html.ActionLink("EditUserDetails | ", "EditUserReg_load", "EditUserReg", new { id = item.User_Id }, new { @class = "button" })
+                            @Html.ActionLink("EditProfileImage", "profilepic_Load", "UpdateProfilePic", new { id = item.User_Id }, new { @class = "button" })
+                        </td>
+                    </tr>
                 }
             </table>
+           
         </div>
         <br>
 

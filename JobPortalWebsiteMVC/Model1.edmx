@@ -200,6 +200,20 @@
           <Parameter Name="User_Id" Type="int" Mode="In" />
           <Parameter Name="Resume" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="SP_UpdateUSerRegData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="PhoneNumber" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_UpdateUSerRegProfilepic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="image" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_UserDataID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_UserRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="User_Id" Type="int" Mode="In" />
           <Parameter Name="Name" Type="nvarchar" Mode="In" />
@@ -365,6 +379,20 @@
             <Parameter Name="Jobid" Mode="In" Type="Int32" />
             <Parameter Name="status" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_UserDataID" ReturnType="Collection(Model.SP_UserDataID_Result)">
+          <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateUSerRegData">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="PhoneNumber" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UpdateUSerRegProfilepic">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="image" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="JP_ExperienceTB">
           <Key>
@@ -457,6 +485,17 @@
           <Property Name="App_Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="App_Status" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="SP_UserDataID_Result">
+          <Property Type="Int32" Name="User_Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="DateOfBirth" Nullable="false" />
+          <Property Type="Int64" Name="PhoneNumber" Nullable="false" />
+          <Property Type="String" Name="image" Nullable="false" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -604,6 +643,23 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_DeletePostedJobWIthComID" FunctionName="Model.Store.SP_DeletePostedJobWIthComID" />
           <FunctionImportMapping FunctionImportName="SP_CountUserAppliedJobWithID" FunctionName="Model.Store.SP_CountUserAppliedJobWithID" />
+          <FunctionImportMapping FunctionImportName="SP_UserDataID" FunctionName="Model.Store.SP_UserDataID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.SP_UserDataID_Result">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_UpdateUSerRegData" FunctionName="Model.Store.SP_UpdateUSerRegData" />
+          <FunctionImportMapping FunctionImportName="SP_UpdateUSerRegProfilepic" FunctionName="Model.Store.SP_UpdateUSerRegProfilepic" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -166,6 +166,7 @@ namespace JobPortalWebsiteMVC.Controllers
                     {
                         var box = new Userregcls
                         {
+                            User_Id=Convert.ToInt32(da["User_Id"]),
                             Name = da["Name"].ToString(),
                             Address = da["Address"].ToString(),
                             Email = da["Email"].ToString(),

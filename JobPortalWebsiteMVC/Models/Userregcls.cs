@@ -8,6 +8,7 @@ namespace JobPortalWebsiteMVC.Models
 {
     public class Userregcls
     {
+        public int User_Id { get; set; }
         [Required(ErrorMessage ="Enter Name")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Enter Address")]
